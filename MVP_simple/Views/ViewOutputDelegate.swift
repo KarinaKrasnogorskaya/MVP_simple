@@ -10,4 +10,5 @@ import Foundation
 protocol ViewOutputDelegate: AnyObject {
     func saveData()
     func getData()
+    func getRandomCount()
 }

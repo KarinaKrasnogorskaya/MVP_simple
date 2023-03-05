@@ -9,6 +9,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var tickerLabel: UILabel!
+    @IBOutlet var valueLabel: UILabel!
+    @IBAction func buttonPressed(_ sender: Any) {
+        self.viewOutputDelegate?.getRandomCount()
+    }
+    
+    private var count = 0
     private var testData: [Crypto] = []
     private let presenter = Presenter()
     
@@ -25,7 +34,7 @@ class ViewController: UIViewController {
 
 extension ViewController: ViewInputDelegate {
     func setupInitiolState() {
-        <#code#>
+        displayData(i: count)
     }
     
     func setupData(with testData: ([Crypto])) {
@@ -33,7 +42,13 @@ extension ViewController: ViewInputDelegate {
     }
     
     func displayData(i: Int) {
-        <#code#>
+        if testData.count >= 0 && count <= (testData.count - 1) && count >= 0 {
+            nameLabel.text = testData[i].name
+            tickerLabel.text = testData[i].ticker
+            valueLabel.text = String(testData[i].value)
+        } else {
+            print("Sorry, no data")
+        }
     }
     
     
